@@ -27,9 +27,9 @@ export function AboutSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="lg:col-span-7"
         >
-          <p className="text-sm font-medium tracking-wide text-accent-text">
+          <h2 className="text-sm font-medium tracking-wide text-accent-text">
             About
-          </p>
+          </h2>
 
           <p className="mt-6 font-display text-2xl leading-snug text-foreground sm:text-3xl">
             A Computer Science degree got me in the door — shipping is what
@@ -57,7 +57,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <p className="mt-8 text-sm text-foreground/40">
+          <p className="mt-8 text-sm text-foreground/65">
             Certified: React Native — Advanced Concepts · React Native — The
             Practical Guide · React Native Skia &amp; Reanimated
           </p>
@@ -72,7 +72,7 @@ export function AboutSection() {
         >
           {FACTS.map((fact) => (
             <div key={fact.label} className="px-6 py-5">
-              <dt className="text-xs font-medium uppercase tracking-wider text-foreground/40">
+              <dt className="text-xs font-medium uppercase tracking-wider text-foreground/65">
                 {fact.label}
               </dt>
               <dd className="mt-1.5 text-sm text-foreground/80">

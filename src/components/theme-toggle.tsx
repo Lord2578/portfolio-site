@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@/components/icons";
+import { useHasMounted } from "@/lib/use-has-mounted";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   // Avoid rendering theme-dependent UI until mounted, since the resolved
   // theme (from system preference) isn't known on the server.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useHasMounted();
 
   const isDark = mounted && resolvedTheme === "dark";
 

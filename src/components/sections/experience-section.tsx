@@ -14,7 +14,7 @@ export function ExperienceSection() {
       className="scroll-mt-16 border-b border-border/60 px-6 py-28"
     >
       <div className="mx-auto w-full max-w-5xl">
-        <motion.p
+        <motion.h2
           initial={prefersReducedMotion ? show : hidden}
           whileInView={show}
           viewport={{ once: true, margin: "-80px" }}
@@ -22,7 +22,7 @@ export function ExperienceSection() {
           className="text-sm font-medium tracking-wide text-accent-text"
         >
           Experience
-        </motion.p>
+        </motion.h2>
 
         <div className="relative mt-10 max-w-3xl">
           <div
@@ -49,7 +49,7 @@ export function ExperienceSection() {
                   className="absolute left-0 top-2 h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_10px_var(--accent)]"
                 />
 
-                <p className="text-xs font-medium uppercase tracking-wider text-foreground/40">
+                <p className="text-xs font-medium uppercase tracking-wider text-foreground/65">
                   {role.period}
                 </p>
                 <h3 className="mt-2 font-display text-2xl text-foreground">

@@ -62,7 +62,7 @@ export function HeroSection() {
           Store — treating performance as a feature, not an afterthought.
         </motion.p>
 
-        <motion.p variants={item} className="mt-4 text-sm text-foreground/45">
+        <motion.p variants={item} className="mt-4 text-sm text-foreground/65">
           Poland (Rzeszów) · Open to remote &amp; relocation
         </motion.p>
 

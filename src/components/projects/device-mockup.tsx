@@ -48,10 +48,10 @@ export function DeviceMockup() {
             role="tab"
             aria-selected={index === activeIndex}
             onClick={() => setActiveIndex(index)}
-            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               index === activeIndex
                 ? "border-accent/40 bg-accent/10 text-accent-text"
-                : "border-border text-foreground/50 hover:text-foreground"
+                : "border-border text-foreground/65 hover:text-foreground"
             }`}
           >
             {screen.label}

@@ -14,7 +14,7 @@ export function SkillsSection() {
       className="scroll-mt-16 border-b border-border/60 px-6 py-28"
     >
       <div className="mx-auto w-full max-w-5xl">
-        <motion.p
+        <motion.h2
           initial={prefersReducedMotion ? show : hidden}
           whileInView={show}
           viewport={{ once: true, margin: "-80px" }}
@@ -22,7 +22,7 @@ export function SkillsSection() {
           className="text-sm font-medium tracking-wide text-accent-text"
         >
           Skills
-        </motion.p>
+        </motion.h2>
 
         <div className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {SKILL_GROUPS.map((group, index) => (
@@ -37,7 +37,7 @@ export function SkillsSection() {
                 delay: (index % 3) * 0.08,
               }}
             >
-              <h3 className="text-xs font-medium uppercase tracking-wider text-foreground/40">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-foreground/65">
                 {group.label}
               </h3>
               <div className="mt-4 flex flex-wrap gap-2">

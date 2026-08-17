@@ -20,7 +20,7 @@ export function ProjectsSection() {
       className="scroll-mt-16 border-b border-border/60 px-6 py-28"
     >
       <div className="mx-auto w-full max-w-5xl">
-        <motion.p
+        <motion.h2
           initial={prefersReducedMotion ? show : hidden}
           whileInView={show}
           viewport={{ once: true, margin: "-80px" }}
@@ -28,7 +28,7 @@ export function ProjectsSection() {
           className="text-sm font-medium tracking-wide text-accent-text"
         >
           Projects
-        </motion.p>
+        </motion.h2>
 
         <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
           <motion.div
@@ -41,7 +41,7 @@ export function ProjectsSection() {
             <h3 className="font-display text-3xl text-foreground sm:text-4xl">
               RouteRig
             </h3>
-            <p className="mt-1 text-sm text-foreground/50">
+            <p className="mt-1 text-sm text-foreground/65">
               Truck-aware route planner — Expo &amp; React Native
             </p>
 
@@ -49,8 +49,8 @@ export function ProjectsSection() {
               <p>
                 <span className="font-medium text-foreground">Problem — </span>
                 regular navigation apps route trucks the same way they route
-                cars, ignoring height, weight, and length restrictions. That's
-                how trucks end up wedged under low bridges.
+                cars, ignoring height, weight, and length restrictions.
+                That&apos;s how trucks end up wedged under low bridges.
               </p>
               <p>
                 <span className="font-medium text-foreground">Solution — </span>
@@ -91,7 +91,7 @@ export function ProjectsSection() {
               href={ROUTERIG_REPO}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent-text"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <GithubIcon className="h-4 w-4" />
               View on GitHub
