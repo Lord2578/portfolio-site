@@ -1,0 +1,61 @@
+export const SKILL_GROUPS = [
+  {
+    id: "core",
+    label: "Core",
+    items: ["React Native", "Expo", "TypeScript", "React", "Next.js", "JavaScript (ES6+)"],
+  },
+  {
+    id: "state-data",
+    label: "State & Data",
+    items: [
+      "Context API",
+      "Zustand",
+      "TanStack Query",
+      "React Hook Form",
+      "Zod",
+      "Yup",
+      "AsyncStorage",
+      "SecureStore",
+    ],
+  },
+  {
+    id: "ui-animation",
+    label: "UI & Animation",
+    items: [
+      "Tailwind CSS",
+      "NativeWind",
+      "Tamagui",
+      "styled-components",
+      "React Native Elements",
+      "Reanimated",
+      "Skia",
+    ],
+  },
+  {
+    id: "native-platform",
+    label: "Native & Platform",
+    items: [
+      "Native Modules (iOS/Android)",
+      "Deep Linking",
+      "App Permissions",
+      "Camera & Media Access",
+      "Background Tasks",
+      "Quick Actions",
+      "React Navigation",
+    ],
+  },
+  {
+    id: "testing-release",
+    label: "Testing & Release",
+    items: [
+      "Jest",
+      "React Native Testing Library",
+      "EAS Build",
+      "OTA Updates",
+      "TestFlight",
+      "App Store & Google Play",
+      "Firebase",
+      "i18n",
+    ],
+  },
+] as const;

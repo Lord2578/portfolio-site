@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
+/* next-themes toggles a `dark` class on <html>; opt Tailwind's dark: variant
+   into that instead of the default prefers-color-scheme media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+
+  /* Amber accent, split by use: `accent` is for decorative/graphical use
+     (route line, marker, hover fills, focus rings) where WCAG's 4.5:1 text
+     contrast doesn't apply. `accent-text` is a darkened variant verified at
+     ~5.4:1 on this background for any actual accent-colored text or links. */
+  --accent: #d97706;
+  --accent-text: #92400e;
+  --accent-contrast: #ffffff;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #27272a;
+
+  /* On a near-black surface, amber-400/300 clear 4.5:1 by a wide margin, so
+     the decorative and text tokens can sit closer together here. */
+  --accent: #fbbf24;
+  --accent-text: #fcd34d;
+  --accent-contrast: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-contrast: var(--accent-contrast);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-fraunces);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Hero route-line: draws in on load, marker rides the same path in sync.
+   Pure CSS (not Framer Motion) so the reduced-motion fallback is a single
+   media query rather than a JS branch. */
+.route-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: route-draw 1.6s 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.route-marker {
+  offset-distance: 0%;
+  offset-anchor: 50% 50%;
+  transform: translate(-50%, -50%);
+  animation: route-travel 1.6s 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes route-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes route-travel {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .route-marker {
+    animation: none;
+    offset-distance: 100%;
+  }
 }
