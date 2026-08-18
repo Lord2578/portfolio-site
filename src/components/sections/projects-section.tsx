@@ -8,6 +8,95 @@ import {
   ROUTERIG_REPO,
   ROUTERIG_STACK,
 } from "@/lib/routerig";
+import {
+  COMMERCIAL_PROJECTS,
+  type CommercialProject,
+} from "@/lib/commercial-projects";
+
+function CommercialProjectCard({
+  project,
+  delay,
+}: {
+  project: CommercialProject;
+  delay: number;
+}) {
+  const prefersReducedMotion = useReducedMotion();
+  const hidden = { opacity: 0, y: 16 };
+  const show = { opacity: 1, y: 0 };
+
+  return (
+    <motion.div
+      initial={prefersReducedMotion ? show : hidden}
+      whileInView={show}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, ease: "easeOut", delay }}
+      className="grid gap-8 lg:grid-cols-12 lg:gap-16"
+    >
+      <div className="lg:col-span-7">
+        <h3 className="font-display text-2xl text-foreground sm:text-3xl">
+          {project.title}
+        </h3>
+        <p className="mt-1 text-sm text-foreground/65">{project.subtitle}</p>
+
+        <p className="mt-6 text-base leading-relaxed text-foreground/70">
+          {project.description}
+        </p>
+
+        <h4 className="mt-10 text-sm font-medium text-foreground">
+          Key contributions
+        </h4>
+        <dl className="mt-4 space-y-5">
+          {project.contributions.map((c) => (
+            <div key={c.title}>
+              <dt className="text-sm font-medium text-foreground/85">
+                {c.title}
+              </dt>
+              <dd className="mt-1 text-sm leading-relaxed text-foreground/60">
+                {c.detail}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          {project.stack.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-full border border-border px-3 py-1 font-mono text-xs text-foreground/60"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="lg:col-span-5">
+        <div className="rounded-xl border border-border/50 bg-muted/20 p-6">
+          <dl className="space-y-4">
+            {(
+              [
+                ["Company", project.meta.company],
+                ["Role", project.meta.role],
+                ["Mobile team", project.meta.team],
+                ["Platforms", project.meta.platforms],
+              ] as const
+            ).map(([label, value]) => (
+              <div key={label}>
+                <dt className="text-xs text-foreground/40">{label}</dt>
+                <dd className="mt-0.5 text-sm font-medium text-foreground/70">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 text-xs text-foreground/30">
+            NDA — no screenshots available
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export function ProjectsSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -30,7 +119,39 @@ export function ProjectsSection() {
           Projects
         </motion.h2>
 
-        <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Commercial Work */}
+        <motion.p
+          initial={prefersReducedMotion ? show : hidden}
+          whileInView={show}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mt-6 text-sm font-medium tracking-wide text-foreground/40"
+        >
+          Commercial Work (NDA)
+        </motion.p>
+
+        <div className="mt-8 space-y-16">
+          {COMMERCIAL_PROJECTS.map((project, i) => (
+            <CommercialProjectCard
+              key={project.id}
+              project={project}
+              delay={i * 0.05}
+            />
+          ))}
+        </div>
+
+        {/* Personal Projects */}
+        <motion.p
+          initial={prefersReducedMotion ? show : hidden}
+          whileInView={show}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mt-20 border-t border-border/40 pt-16 text-sm font-medium tracking-wide text-foreground/40"
+        >
+          Personal Projects
+        </motion.p>
+
+        <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-16">
           <motion.div
             initial={prefersReducedMotion ? show : hidden}
             whileInView={show}
